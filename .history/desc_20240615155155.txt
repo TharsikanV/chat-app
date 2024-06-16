@@ -1,0 +1,7 @@
+1.npm init -y
+2.npm i express cors mongoose jsonwebtoken cookie-parser dotenv bcryptjs
+3. npm i nodemon
+
+forntend
+1.npx create-react-app client
+2.npm install -D tailwindcss

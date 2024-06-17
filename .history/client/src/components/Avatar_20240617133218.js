@@ -1,0 +1,28 @@
+import React from 'react'
+
+const Avatar = ({userId,name,imageUrl,width,height}) => {
+  return (
+    <div>
+        {
+            imageUrl?(
+                <img
+                    src={imageUrl}
+                    width={width}
+                    height={height}
+                    alt={name}
+                />
+            ) :(
+                name?(
+                    <div>
+
+                    </div>
+                ) :(
+                        
+                )
+            )
+        }
+    </div>
+  )
+}
+
+export default Avatar

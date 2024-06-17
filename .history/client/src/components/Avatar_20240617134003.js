@@ -1,0 +1,44 @@
+import React from 'react'
+
+const Avatar = ({userId,name,imageUrl,width,height}) => {
+
+    let avatarName=""
+
+    if(name){
+        const splitName=name?.split(" ")
+
+        if(splitName.length>1){
+            avatarName=splitName[0][0]+splitName[1][0]
+        }
+        else{
+            avatarName=splitName[0][0]
+        }
+    }
+
+  return (
+    <div className='text-slate-800'>
+        {
+            imageUrl?(
+                <img
+                    src={imageUrl}
+                    width={width}
+                    height={height}
+                    alt={name}
+                />
+            ) :(
+                name?(
+                    <div style={{width:width}} className='overflow-hidden rounded-full' >
+                        {avatarName}
+                    </div>
+                ) :(
+                    <PiUserCircle
+                        size={width}
+                    />
+                )
+            )
+        }
+    </div>
+  )
+}
+
+export default Avatar

@@ -1,16 +1,15 @@
 import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { logout, setUser } from '../redux/userSlice';
-import Sidebar from '../components/Sidebar';
 
 const Home = () => {
   const user=useSelector(state=>state.user)
   const dispatch=useDispatch()
   const navigate=useNavigate()
-  const location=useLocation()
 
+  console.log("redux user",user)
 
   const fetchUserDetails = async()=>{ 
     try {
@@ -26,7 +25,7 @@ const Home = () => {
           dispatch(logout())
           navigate("/email")
         }
-        // console.log("current user Details",response)
+        console.log("current user Details",response)
     } catch (error) {
       console.log("error",error)
     }
@@ -36,14 +35,13 @@ const Home = () => {
     fetchUserDetails()
   },[])
 
-  const basePath=location.pathname ==='/'
   return (
-    <div className='grid lg:grid-cols-[300px,1fr] h-screen max-h-screen'>
-      <section className={`bg-white ${!basePath && "hidden"} lg:block`}>
-        <Sidebar/>
+    <div className='grid grid-cols-['>
+      <section>
+        sidebar
       </section>
       {/* message component*/}
-      <section className={`${basePath && "hidden"}`}>
+      <section>
         <Outlet/>
       </section>
 

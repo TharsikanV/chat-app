@@ -1,0 +1,13 @@
+1.npm init -y
+2.npm i express cors mongoose jsonwebtoken cookie-parser dotenv bcryptjs
+3. npm i nodemon
+4.npm i socket.io
+
+forntend
+1.npx create-react-app client
+2.npm install -D tailwindcss
+3.npx tailwindcss init
+4.npm i react-router-dom
+5.npm i axios       itha chat-app la install panniddan
+6.npm i react-hot-toast
+7.npm install @reduxjs/toolkit react-redux

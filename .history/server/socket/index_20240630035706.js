@@ -153,11 +153,11 @@ io.on('connection', async (socket) => {
          
         // send conversation
         
-         const conversationSender= await getConversation(user?._id?.toString())
-         const conversationReceiver= await getConversation(msgByUserId)
+         const conversationSender= await getConversation(user?._id)
+         const conversationReceiver= await getConversation(data?.receiver)
  
-         io.to(user?._id?.toString()).emit('conversation',conversationSender)
-         io.to(msgByUserId).emit('conversation',conversationReceiver)
+         io.to(user?._id.toString()).emit('conversation',conversationSender)
+         io.to(data?.receiver).emit('conversation',conversationReceiver)
     })
 
     // disconnect

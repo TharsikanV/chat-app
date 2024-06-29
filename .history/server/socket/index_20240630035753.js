@@ -154,7 +154,7 @@ io.on('connection', async (socket) => {
         // send conversation
         
          const conversationSender= await getConversation(user?._id?.toString())
-         const conversationReceiver= await getConversation(msgByUserId)
+         const conversationReceiver= await getConversation(data?.receiver)
  
          io.to(user?._id?.toString()).emit('conversation',conversationSender)
          io.to(msgByUserId).emit('conversation',conversationReceiver)

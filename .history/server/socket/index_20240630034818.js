@@ -136,28 +136,13 @@ io.on('connection', async (socket) => {
        
     })
 
-    socket.on('seen',async (msgByUserId)=>{
+    socket.on('seen',async ()=>{
         let conversation = await ConversationModel.findOne({
-           "$or" : [
-                { sender : user?._id, receiver : msgByUserId },
-                { sender : msgByUserId, receiver :  user?._id}
+            "$or": [
+                { sender: data?.sender, receiver: data?.receiver },
+                { sender: data?.receiver, receiver: data?.sender },
             ]
         })
-
-        const conversationMessageId=conversation?.messages || []
-
-        const updateMessages=await MessageModel.updateMany(
-            {_id :{"$in" : conversationMessageId},msgByUserId : msgByUserId},
-            {"$set" :{seen : true}}
-        )
-         
-        // send conversation
-        
-         const conversationSender= await getConversation(user?._id?.toString())
-         const conversationReceiver= await getConversation(msgByUserId)
- 
-         io.to(user?._id?.toString()).emit('conversation',conversationSender)
-         io.to(msgByUserId).emit('conversation',conversationReceiver)
     })
 
     // disconnect

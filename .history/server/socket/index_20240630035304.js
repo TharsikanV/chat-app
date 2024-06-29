@@ -147,17 +147,8 @@ io.on('connection', async (socket) => {
         const conversationMessageId=conversation?.messages || []
 
         const updateMessages=await MessageModel.updateMany(
-            {_id :{"$in" : conversationMessageId},msgByUserId : msgByUserId},
-            {"$set" :{seen : true}}
+            {_id}
         )
-         
-        // send conversation
-        
-         const conversationSender= await getConversation(user?._id?.toString())
-         const conversationReceiver= await getConversation(msgByUserId)
- 
-         io.to(user?._id?.toString()).emit('conversation',conversationSender)
-         io.to(msgByUserId).emit('conversation',conversationReceiver)
     })
 
     // disconnect

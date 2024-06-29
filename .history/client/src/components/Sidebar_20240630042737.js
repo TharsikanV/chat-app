@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { IoChatbubbleEllipses } from "react-icons/io5";
 import { FaUserPlus } from "react-icons/fa";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { BiLogOut } from "react-icons/bi";
 import Avatar from './Avatar'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import EditUserDetails from './EditUserDetails';
 import Divider from './Divider';
 import { FiArrowUpLeft } from "react-icons/fi";
 import SearchUser from './SearchUser';
 import { FaImage } from "react-icons/fa6";
 import { FaVideo } from "react-icons/fa6";
-import { logout } from '../redux/userSlice';
 
 const Sidebar = () => {
     const user = useSelector(state => state?.user)
@@ -19,9 +18,6 @@ const Sidebar = () => {
     const [allUser, setAllUser] = useState([])
     const [openSearchUser, setOpenSearchUser] = useState(false)
     const socketConnection = useSelector(state => state?.user?.socketConnection)
-    const dispatch=useDispatch()
-    const navigate=useNavigate()
-
     useEffect(() => {
         if (socketConnection) {
             socketConnection.emit('sidebar', user._id)
@@ -55,12 +51,6 @@ const Sidebar = () => {
         }
     }, [socketConnection, user])
 
-    const handleLogout = ()=>{
-        dispatch(logout())
-        navigate("/email")
-        localStorage.clear()
-    }
-
 
     return (
         <div className='w-full h-full grid grid-cols-[48px,1fr] bg-white'>
@@ -87,7 +77,7 @@ const Sidebar = () => {
                             userId={user._id}
                         />
                     </button>
-                    <button className='w-12 h-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded' title='logout' onClick={handleLogout}>
+                    <button className='w-12 h-12 flex justify-center items-center cursor-pointer hover:bg-slate-200 rounded' title='logout' >
                         <span className='-ml-2'>
                             <BiLogOut
                                 size={20}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { IoChatbubbleEllipses } from "react-icons/io5";
 import { FaUserPlus } from "react-icons/fa";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { BiLogOut } from "react-icons/bi";
 import Avatar from './Avatar'
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,7 +20,6 @@ const Sidebar = () => {
     const [openSearchUser, setOpenSearchUser] = useState(false)
     const socketConnection = useSelector(state => state?.user?.socketConnection)
     const dispatch=useDispatch()
-    const navigate=useNavigate()
 
     useEffect(() => {
         if (socketConnection) {
@@ -57,8 +56,6 @@ const Sidebar = () => {
 
     const handleLogout = ()=>{
         dispatch(logout())
-        navigate("/email")
-        localStorage.clear()
     }
 
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { IoChatbubbleEllipses } from "react-icons/io5";
 import { FaUserPlus } from "react-icons/fa";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { BiLogOut } from "react-icons/bi";
 import Avatar from './Avatar'
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +11,6 @@ import { FiArrowUpLeft } from "react-icons/fi";
 import SearchUser from './SearchUser';
 import { FaImage } from "react-icons/fa6";
 import { FaVideo } from "react-icons/fa6";
-import { logout } from '../redux/userSlice';
 
 const Sidebar = () => {
     const user = useSelector(state => state?.user)
@@ -20,7 +19,6 @@ const Sidebar = () => {
     const [openSearchUser, setOpenSearchUser] = useState(false)
     const socketConnection = useSelector(state => state?.user?.socketConnection)
     const dispatch=useDispatch()
-    const navigate=useNavigate()
 
     useEffect(() => {
         if (socketConnection) {
@@ -56,9 +54,7 @@ const Sidebar = () => {
     }, [socketConnection, user])
 
     const handleLogout = ()=>{
-        dispatch(logout())
-        navigate("/email")
-        localStorage.clear()
+
     }
 
 

@@ -58,7 +58,7 @@ const Sidebar = () => {
     const handleLogout = ()=>{
         dispatch(logout())
         navigate("/email")
-        localStorage.clear()
+        
     }
 
 

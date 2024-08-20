@@ -103,7 +103,7 @@ const CheckVerificationCode = () => {
         <h3>Welcome to Chat app!</h3>
         <form className='grid gap-4 mt-3' onSubmit={handleSubmit}>
           <div className='flex flex-col gap-1'>
-            <label htmlFor='password'>Verification Code :</label>
+            {/* <label htmlFor='password'>Verification Code :</label>
             <input
               type='password'
               id='password'
@@ -113,12 +113,12 @@ const CheckVerificationCode = () => {
               value={data.password}
               onChange={handleOnChange}
               required
-            />
+            /> */}
           </div>
           <button className='bg-primary text-lg px-4 py-1 hover:bg-secondary rounded mt-2 font-bold text-white leading-relaxed tracking-wide'>
             Verify
           </button>
-        </form>
+        {/* </form> */}
         {/* <p className='my-3 text-center'><Link to={"/forgot-password"} className='hover:text-primary font-semibold'>Forgot password ?</Link></p> */}
       </div>
 
